@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* tiny theme vars */
+@theme {
+  --color-brand-primary: #7918a6;
+  --color-brand-primary-hover: #8c28bb;
+}
+
+/* Dark purplish grid + conic glow background */
+.bg-purple-grid {
+  position: relative;
+  min-height: 100vh;
+  background:
+    radial-gradient(80vmax 80vmax at 50% 50%, rgba(121, 24, 166, 0.18), transparent 60%),
+    conic-gradient(from 270deg at 50% 50%,
+      #120020 0deg,
+      #f36fff 53.3deg,
+      #268aff 90.46deg,
+      #52eaea 126.24deg,
+      #120020 178.82deg,
+      #120020 360deg);
+  background-attachment: fixed;
+  color-scheme: dark;
+}
+.bg-purple-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 24px 24px;
+  mask: linear-gradient(to bottom, transparent, rgba(0,0,0,.75) 15%, rgba(0,0,0,.85) 80%, transparent);
+  pointer-events: none;
+}
+
+/* simple dark card */
+.card { @apply w-full max-w-5xl rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl shadow-xl; }
+
+/* inputs */
+.input { @apply w-full rounded-xl border border-white/10 bg-[#0f141b] text-white px-3 py-2 outline-none; }
+.textarea { @apply w-full min-h-[110px] rounded-xl border border-white/10 bg-[#0f141b] text-white p-3 outline-none; }
+
+/* segment toggle + buttons */
+.segment { @apply inline-flex rounded-full border border-white/10 overflow-hidden; }
+.segment-btn { @apply px-4 py-2 text-sm text-white/80 hover:bg-white/5 transition; }
+.segment-btn-active { @apply bg-slate-800 text-white; }
+.btn { @apply inline-flex items-center gap-2 rounded-full text-white text-sm px-4 py-2; background: var(--color-brand-primary); }
+.btn:hover { background: var(--color-brand-primary-hover); }
+.badge { @apply text-xs px-2.5 py-1 rounded-full; }
+
+html, body, #root { height: 100%; }
