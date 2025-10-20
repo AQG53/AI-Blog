@@ -30,7 +30,7 @@ export function usePrompt() {
         - Include practical examples and insights.
         - Use keywords to keep users engaged.
         - Add 5 FAQs at the end with concise answers.
-        - If sources are mentioned, cite them in-text and add a References list.
+        - If sources are mentioned, cite them in-text using IEEE notations and add a References list.
         - Include a short SEO meta description at the top (less than 160 characters).
         - End with a strong conclusion.
 
@@ -55,9 +55,9 @@ export function usePrompt() {
     if (!finalPrompt) build();
 
     try {
-      console.log(finalPrompt)
+      setRawPrompt(finalPrompt)
       setLoading(true);
-      const res = await axiosInstance.post("/blog/generate", { finalPrompt });
+      const res = await axiosInstance.post("/blog/generate", { rawPrompt });
       setGenerated(res.data?.markdown || "");
     } catch (e) {
       const msg =
