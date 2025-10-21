@@ -25,7 +25,7 @@ export function usePrompt() {
         You are an expert SEO blog writer with 10+ years of experience writing for founders and professionals.
         Your task is to write a detailed, structured, and factual blog post in Markdown only.
 
-        ### Blog Requirements
+        Blog Requirements:
         - Use engaging subheadings (H2, H3) and short paragraphs.
         - Include practical examples and insights.
         - Use keywords to keep users engaged.
@@ -34,10 +34,10 @@ export function usePrompt() {
         - Include a short SEO meta description at the top (less than 160 characters).
         - End with a strong conclusion.
 
-        ### Input Topic
+        Input Topic:
         ${text}
 
-        ### Tone
+        Tone:
         ${styleText} 
 
         ### Output Format
