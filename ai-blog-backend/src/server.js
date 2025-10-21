@@ -8,6 +8,10 @@ const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("API is running");
+})
+
 app.post("/api/blog/generate", async (req, res) => {
   try {
     const { rawPrompt } = req.body;
@@ -33,4 +37,19 @@ app.post("/api/blog/generate", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+const startServer = async () => {
+  try {
+    if (process.env.NODE_ENV !== "production") {
+      app.listen(ENV.PORT, () => {
+        console.log("Server is running on port: ", ENV.PORT)
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
+
+startServer();
+
+export default app;
